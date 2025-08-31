@@ -1,0 +1,75 @@
+<div
+  class="chart-container"
+  style="width: 800px; height: 400px; position: relative"
+>
+  <svg width="100%" height="100%" [attr.viewBox]="viewBoxSize">
+    <g>
+      <rect
+        x="0"
+        y="0"
+        width="400"
+        height="200"
+        fill="#f5f5f5"
+        stroke="rgb(150,150,150,0.9)"
+        stroke-width="1"
+      />
+      <g>
+        <!-- Vertical grid lines and year labels -->
+        @for (points of allSeries; track points) {
+        <line
+          [attr.x1]="xScaleSeries(points)"
+          y1="0"
+          [attr.x2]="xScaleSeries(points)"
+          y2="200"
+          stroke="#ccc"
+          stroke-width="0.5"
+          stroke-dasharray="4,4"
+        />
+        <text
+          [attr.x]="xScaleSeries(points)"
+          y="215"
+          font-size="12"
+          text-anchor="middle"
+          fill="#333"
+        >
+          {{ points }}
+        </text>
+        }
+      </g>
+      @for (points of series; track $index) {
+      <path
+        [attr.d]="curvePath(points)"
+        fill="none"
+        [attr.stroke]="getColor($index)"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        [class.chart-line]="hoveredPoint"
+        [class.chart-line]="hoveredPoint"
+        opacity="0.6"
+      />
+      <svg:g
+        app-bullet-point
+        [points]="points"
+        [xScale]="xScale(points)"
+        [yScale]="yScale(points)"
+        [legend]="{ series: 'Year', value: 'Value' }"
+        [color]="getColor($index)"
+        (pointHover)="onHover($event)"
+      ></svg:g>
+      }
+    </g>
+  </svg>
+  <div class="legend-container">
+    @for (points of series; track $index) {
+    <div class="legend-item">
+      Serie {{ $index + 1 }}
+      <span
+        class="legend-color"
+        [style.background-color]="getColor($index)"
+      ></span>
+    </div>
+
+    }
+  </div>
+</div>

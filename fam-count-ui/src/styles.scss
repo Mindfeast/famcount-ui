@@ -1,0 +1,30 @@
+* {
+  font-family: "Roboto";
+  font-size: 22px;
+}
+body {
+  font-family: "Roboto";
+  font-size: 22px;
+}
+
+@mixin smooth-opacity($duration: 0.3s, $from: 0.6, $to: 0.9) {
+  opacity: $from;
+  transition: opacity $duration ease-in-out;
+  &:hover {
+    opacity: $to;
+  }
+}
+// Example: styles.scss or bullet-point.component.scss
+.tooltip {
+  background: #222;
+  color: #fff;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.6em;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  opacity: 0.95;
+  max-width: 80px;
+  white-space: pre-line; // allows \n line breaks
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}

@@ -1,0 +1,58 @@
+@use "../../styles.scss" as *;
+
+svg {
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  display: block;
+}
+.chart-container {
+  width: 100%;
+  max-width: 800px;
+  aspect-ratio: 2 / 1; /* 400:200 */
+  position: relative;
+  align-items: center;
+  justify-items: center;
+}
+
+.legend-container {
+  /* Remove position, left, bottom, transform, z-index */
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 5px auto 0 auto;
+  width: fit-content;
+}
+
+path {
+  opacity: 0.6;
+  transition: opacity 0.3s ease-in-out;
+}
+path:hover {
+  opacity: 0.9;
+}
+
+.chart-line {
+  opacity: 0.9;
+}
+
+line:hover {
+  stroke: rgb(236, 236, 236);
+  transition: ease-in-out 0.3s;
+}
+
+.legend-item {
+  font-size: 14px;
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.legend-color {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-left: 8px;
+  margin-right: 20px;
+  border-radius: 2px;
+}
