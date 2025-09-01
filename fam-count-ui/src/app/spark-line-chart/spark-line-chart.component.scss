@@ -1,0 +1,35 @@
+app-spark-line-chart {
+  margin: 0;
+  padding: 0;
+}
+
+.chart-container {
+  width: 600px;
+  height: 400px;
+  display: flex;
+  background-color: rgb(44, 41, 53);
+  border-radius: 10px;
+  margin-top: 100px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.legend-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Increased gap for better spacing */
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 90%;
+  left: 50%;
+}
+
+svg {
+  /* No need for flex or absolute positioning here */
+  display: block;
+  /* Optionally, set width/height to 100% to fill the container */
+  position: relative;
+  background-color: rgb(77, 175, 255, 0.1);
+}

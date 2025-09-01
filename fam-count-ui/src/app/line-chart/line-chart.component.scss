@@ -10,18 +10,17 @@ svg {
   width: 100%;
   max-width: 800px;
   aspect-ratio: 2 / 1; /* 400:200 */
-  position: relative;
-  align-items: center;
-  justify-items: center;
+  display: flexbox;
+  margin: 0 auto;
 }
 
 .legend-container {
-  /* Remove position, left, bottom, transform, z-index */
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin: 5px auto 0 auto;
-  width: fit-content;
+  align-items: center;
+  gap: 10px; /* Increased gap for better spacing */
+  margin: 0px auto 0 auto;
+  flex-direction: row;
 }
 
 path {
@@ -41,18 +40,42 @@ line:hover {
   transition: ease-in-out 0.3s;
 }
 
-.legend-item {
-  font-size: 14px;
-  margin-top: 8px;
-  display: inline-flex;
-  align-items: center;
+.x-axis-labels {
+  position: relative;
+  width: 100%;
+  height: 24px;
+  margin-top: 4px;
+  user-select: none;
+}
+.x-axis-label {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  font-size: 13px;
+  color: #888;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
-.legend-color {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  margin-left: 8px;
-  margin-right: 20px;
-  border-radius: 2px;
+.y-axis-labels {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 40px;
+  pointer-events: none;
+  /* Add: */
+  display: block;
+}
+.y-axis-label {
+  position: absolute;
+  left: 0; /* align with left edge of container */
+  transform: translateY(50%); /* so label is centered on tick */
+  font-size: 13px;
+  color: #888;
+  white-space: nowrap;
+}
+
+text {
+  font-size: 0.5em;
 }
