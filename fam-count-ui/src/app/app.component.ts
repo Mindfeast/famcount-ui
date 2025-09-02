@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { AsyncPipe, CommonModule } from '@angular/common';
 
 import { FormsModule } from '@angular/forms';
-import { SparkLineChartComponent } from './spark-line-chart/spark-line-chart.component';
+import { GenericChartComponent } from './spark-line-chart/generic-chart.component';
 import { LineChartData } from './spark-line-chart/models/spark.models';
 
 @Component({
@@ -14,7 +14,7 @@ import { LineChartData } from './spark-line-chart/models/spark.models';
     CommonModule,
     AsyncPipe,
     FormsModule,
-    SparkLineChartComponent,
+    GenericChartComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -52,6 +52,20 @@ export class AppComponent {
           { x: 2026, y: 4000 },
         ],
       },
+        {
+        category: 'Grapes',
+        points: [
+          { x: 2018, y: 2444 },
+          { x: 2019, y: 222 },
+          { x: 2019, y: 1123 },
+          { x: 2021, y: 222 },
+          { x: 2022, y: 233 },
+          { x: 2023, y: 600 },
+          { x: 2024, y: 2233 },
+          { x: 2025, y: 4244 },
+          { x: 2026, y: 123 },
+        ],
+      },
     ],
     options: {
       title: 'Fruit Sales',
@@ -65,7 +79,7 @@ export class AppComponent {
       points: serie.points.map((point) => ({
         x: point.x,
         y: point.y,
-        tooltip: `Year: ${point.x} Value: ${point.y}`,
+        tooltip: `Year: ${point.x} Value: ${point.y} €`,
       })),
     })),
     options: this.data.options,

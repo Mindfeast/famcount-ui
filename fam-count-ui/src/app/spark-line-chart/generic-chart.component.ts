@@ -16,10 +16,10 @@ import { ChartLegendComponent } from './chart-legend/chart-legend.component';
 import { GeneralTooltipDirective } from '../shared/general-tooltip.directive';
 
 @Component({
-  selector: 'app-spark-line-chart',
+  selector: 'app-generic-chart',
   standalone: true,
-  templateUrl: './spark-line-chart.component.html',
-  styleUrls: ['./spark-line-chart.component.scss'],
+  templateUrl: './generic-chart.component.html',
+  styleUrls: ['./generic-chart.component.scss'],
   imports: [
     CommonModule,
     SparkLineDotsComponent,
@@ -28,7 +28,7 @@ import { GeneralTooltipDirective } from '../shared/general-tooltip.directive';
     GeneralTooltipDirective,
   ],
 })
-export class SparkLineChartComponent {
+export class GenericChartComponent {
   public computedPoints: Point[][] = [];
   public getColor = getColor;
   public legend!: boolean;

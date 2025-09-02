@@ -13,7 +13,7 @@ import { GeneralTooltipDirective } from '../../shared/general-tooltip.directive'
     <svg:circle
       [attr.cx]="point.x"
       [attr.cy]="point.y"
-      r="3"
+      r="4"
       [attr.fill]="color"
       class="dots"
       (mouseenter)="pointHover.emit(point)"
