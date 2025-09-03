@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { SeriesWithCategory } from '../models/spark.models';
+import { Series } from '../models/generic-chart.models';
 
 @Component({
   selector: 'app-chart-legend',
@@ -9,6 +9,6 @@ import { SeriesWithCategory } from '../models/spark.models';
   styleUrl: './chart-legend.component.scss',
 })
 export class ChartLegendComponent {
-  @Input() data!: SeriesWithCategory;
+  @Input() data!: Series;
   @Input() color: string = '';
 }

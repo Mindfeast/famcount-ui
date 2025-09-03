@@ -1,9 +1,9 @@
-export interface LineChartData {
-  series: SeriesWithCategory[];
+export interface GenericChartData {
+  series: Series[];
   options: ChartOptions;
 }
 
-export interface SeriesWithCategory {
+export interface Series {
   category: string;
   points: Point[];
 }

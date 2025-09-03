@@ -1,4 +1,4 @@
-import { Point } from '../app/spark-line-chart/models/spark.models';
+import { Point } from '../app/spark-line-chart/models/generic-chart.models';
 
 export function getPathCommandsForLine(points: Point[]): string {
   const [firstPoint, ...restPoints] = points;

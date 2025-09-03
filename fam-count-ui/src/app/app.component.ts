@@ -4,7 +4,7 @@ import { AsyncPipe, CommonModule } from '@angular/common';
 
 import { FormsModule } from '@angular/forms';
 import { GenericChartComponent } from './spark-line-chart/generic-chart.component';
-import { LineChartData } from './spark-line-chart/models/spark.models';
+import { GenericChartData } from './spark-line-chart/models/generic-chart.models';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +22,7 @@ import { LineChartData } from './spark-line-chart/models/spark.models';
 export class AppComponent {
   title = 'fam-count-ui';
 
-  public data: LineChartData = {
+  public data: GenericChartData = {
     series: [
       {
         category: 'Apples',
@@ -73,7 +73,7 @@ export class AppComponent {
     },
   };
 
-  mappedData: LineChartData = {
+  mappedData: GenericChartData = {
     series: this.data.series.map((serie) => ({
       category: serie.category,
       points: serie.points.map((point) => ({

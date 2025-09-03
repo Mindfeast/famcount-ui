@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Point } from '../models/spark.models';
+import { Point } from '../models/generic-chart.models';
 import { CommonModule } from '@angular/common';
 import { GeneralTooltipDirective } from '../../shared/general-tooltip.directive';
 

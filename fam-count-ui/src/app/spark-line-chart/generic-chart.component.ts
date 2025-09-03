@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
 import {
   ChartOptions,
-  LineChartData,
+  GenericChartData,
   Point,
-  SeriesWithCategory,
-} from './models/spark.models';
+  Series,
+} from './models/generic-chart.models';
 import { getBounds } from '../../util/getBounds';
 
 import { createLinearScale } from '../../util/createLinearScale';
@@ -32,9 +32,9 @@ export class GenericChartComponent {
   public computedPoints: Point[][] = [];
   public getColor = getColor;
   public legend!: boolean;
-  public categories!: SeriesWithCategory[];
+  public categories!: Series[];
 
-  @Input() set data(data: LineChartData) {
+  @Input() set data(data: GenericChartData) {
     this.legend = data.options.legend;
     this.categories = data.series;
     const bounds = getBounds(data.series.flatMap((s) => s.points));

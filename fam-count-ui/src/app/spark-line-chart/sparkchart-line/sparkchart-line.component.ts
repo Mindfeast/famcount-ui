@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Point } from '../models/spark.models';
+import { Point } from '../models/generic-chart.models';
 import { getPathCommandsForLine } from '../../../util/getPathForLine';
 import { CommonModule } from '@angular/common';
 
