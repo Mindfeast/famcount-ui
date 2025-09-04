@@ -9,22 +9,35 @@ import { GeneralTooltipDirective } from '../../shared/general-tooltip.directive'
   imports: [CommonModule, GeneralTooltipDirective],
   styleUrl: './spark-line-dots.component.scss',
   template: `
-    @for (point of points; track point.x) {
-    <svg:circle
-      [attr.cx]="point.x"
-      [attr.cy]="point.y"
-      r="4"
-      [attr.fill]="color"
-      class="dots"
-      (mouseenter)="pointHover.emit(point)"
-      (mouseleave)="pointHover.emit(undefined)"
-      [tooltip]="point.tooltip || ''"
-    />
-    }
+    <svg>
+      <g>
+        @for (point of points; track point.x) {
+        <circle
+          [attr.cx]="point.x"
+          [attr.cy]="point.y"
+          r="8"
+          fill="transparent"
+          (mouseenter)="hovered = point"
+          (mouseleave)="hovered = undefined"
+          style="cursor: pointer;"
+        />
+        <svg:circle
+          [attr.cx]="point.x"
+          [attr.cy]="point.y"
+          [attr.r]="hovered === point ? 7 : 2"
+          [attr.fill]="color"
+          class="dots"
+          [tooltip]="point.tooltip || ''"
+        />
+        }
+      </g>
+    </svg>
   `,
 })
 export class SparkLineDotsComponent {
   @Input() points: Point[] = [];
   @Input() color: string = 'blue';
   @Output() pointHover = new EventEmitter<Point>();
+
+  hovered?: Point;
 }

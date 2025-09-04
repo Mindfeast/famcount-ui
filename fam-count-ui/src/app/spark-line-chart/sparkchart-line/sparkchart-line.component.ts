@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Point } from '../models/generic-chart.models';
-import { getPathCommandsForLine } from '../../../util/getPathForLine';
+import { getPathCommandsForLine, getSmoothPath } from '../util/getPathForLine';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -18,10 +18,24 @@ import { CommonModule } from '@angular/common';
   /> `,
 })
 export class SparkchartLineComponent {
-  d: string = '';
+  public d: string = '';
+
+  @Input() color: string = 'blue';
+  @Input() smooth: boolean = true;
 
   @Input() set points(points: Point[]) {
-    this.d = getPathCommandsForLine(points);
+    this.updatePath(points);
   }
-  @Input() color: string = 'blue';
+
+  private updatePath(points: Point[]) {
+    if (!points || points.length === 0) {
+      this.d = '';
+      return;
+    }
+    if (this.smooth) {
+      this.d = getSmoothPath(points);
+    } else {
+      this.d = getPathCommandsForLine(points);
+    }
+  }
 }

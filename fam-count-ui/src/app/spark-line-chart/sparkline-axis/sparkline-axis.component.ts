@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { createLinearScale } from '../../../util/createLinearScale';
-import { getBounds } from '../../../util/getBounds';
+import { createLinearScale } from '../util/createLinearScale';
+import { getBounds } from '../util/getBounds';
 import { Series } from '../models/generic-chart.models';
 
 @Component({
@@ -21,7 +21,6 @@ export class SparklineAxisComponent {
   public yTicks: number[] = [];
   public yScale: (y: number) => number = (y) => y;
   public xTicks: number[] = [];
-  public yAxisWidth: number = 30;
 
   ngOnChanges() {
     const allPoints = this.series.flatMap((s) => s.points);
@@ -53,11 +52,12 @@ export class SparklineAxisComponent {
     const xNiceStep = Math.ceil(xRoughStep / xMagnitude) * xMagnitude;
 
     this.xTicks = [];
-    for (let tick = bounds.minX; tick <= bounds.maxX; tick += xNiceStep) {
-      this.xTicks.push(Math.round(tick));
-    }
-    if (this.xTicks[this.xTicks.length - 1] < bounds.maxX) {
-      this.xTicks.push(Math.round(bounds.maxX));
+    for (let i = 0; i < xTargetNumTicks; i++) {
+      const rawTick =
+        bounds.minX + (i * (bounds.maxX - bounds.minX)) / (xTargetNumTicks - 1);
+      // Round to nearest "nice" step
+      const roundedTick = Math.round(rawTick / xNiceStep) * xNiceStep;
+      this.xTicks.push(roundedTick);
     }
   }
 }

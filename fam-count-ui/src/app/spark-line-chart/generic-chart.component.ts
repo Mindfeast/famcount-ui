@@ -6,13 +6,13 @@ import {
   Point,
   Series,
 } from './models/generic-chart.models';
-import { getBounds } from '../../util/getBounds';
+import { getBounds } from './util/getBounds';
 
-import { createLinearScale } from '../../util/createLinearScale';
+import { createLinearScale } from './util/createLinearScale';
 import { CommonModule } from '@angular/common';
 import { SparkLineDotsComponent } from './spark-line-dots/spark-line-dots.component';
 import { SparkchartLineComponent } from './sparkchart-line/sparkchart-line.component';
-import { getColor } from '../../util/colorSetChart';
+import { getColor } from './util/colorSetChart';
 import { ChartLegendComponent } from './chart-legend/chart-legend.component';
 import { GeneralTooltipDirective } from '../shared/general-tooltip.directive';
 import { SparklineAxisComponent } from './sparkline-axis/sparkline-axis.component';

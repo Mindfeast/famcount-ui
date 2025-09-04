@@ -12,6 +12,7 @@ export interface ChartOptions {
   title: string;
   legend: boolean;
   type: ChartType;
+  smooth?: boolean;
 }
 
 export interface Point {

@@ -12,17 +12,18 @@
     ></app-sparkline-axis>
 
     <svg [attr.width]="width" [attr.height]="height">
-      @if (chartData && chartData.options.type === ChartType.Line) { @for (point
-      of computedPoints; track point) {
+      @if (chartData && chartData.options.type === ChartType.Line) { @for
+      (points of computedPoints; track points) {
       <svg:g
         app-spark-line-dots
-        [points]="point"
+        [points]="points"
         [color]="getColor($index)"
       ></svg:g>
       <svg:g
         app-sparkchart-line
-        [points]="point"
+        [points]="points"
         [color]="getColor($index)"
+        [smooth]="true"
       ></svg:g>
       } }
     </svg>
