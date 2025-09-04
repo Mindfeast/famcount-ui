@@ -1,21 +1,35 @@
-<div class="chart-container">
-  <svg width="500px" height="300px">
-    @for (point of computedPoints; track point) {
-    <svg:g
-      app-spark-line-dots
-      [points]="point"
-      [color]="getColor($index)"
-    ></svg:g>
-    <svg:g
-      app-sparkchart-line
-      [points]="point"
-      [color]="getColor($index)"
-    ></svg:g>
-    }
-  </svg>
-  @if (legend) {
+<div
+  class="chart-container"
+  [style.height.px]="height + 100"
+  [style.width.px]="width + 100"
+>
+  <div class="axis-svg-flex" [style.height.px]="height">
+    <app-sparkline-axis
+      [series]="chartData.series"
+      [height]="height"
+      [padding]="0.1"
+      [xScale]="xScale"
+    ></app-sparkline-axis>
+
+    <svg [attr.width]="width" [attr.height]="height">
+      @if (chartData && chartData.options.type === ChartType.Line) { @for (point
+      of computedPoints; track point) {
+      <svg:g
+        app-spark-line-dots
+        [points]="point"
+        [color]="getColor($index)"
+      ></svg:g>
+      <svg:g
+        app-sparkchart-line
+        [points]="point"
+        [color]="getColor($index)"
+      ></svg:g>
+      } }
+    </svg>
+  </div>
+  @if (chartData && chartData.options.legend) {
   <div class="legend-container">
-    @for (category of categories; track $index) {
+    @for (category of chartData.series; track $index) {
     <app-chart-legend
       [data]="category"
       [color]="getColor($index)"

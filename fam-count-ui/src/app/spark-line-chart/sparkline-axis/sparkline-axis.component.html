@@ -1,0 +1,14 @@
+<div class="y-axis-container" [style.height.px]="height">
+  @for (tick of yTicks; track tick) {
+  <div class="y-axis-tick" style="top: {{ yScale(tick) }}px;">
+    {{ tick }}
+  </div>
+  }
+</div>
+<div class="x-axis-container" [style.margin-left.px]="30">
+  @for (tick of xTicks; track tick) {
+  <div class="x-axis-tick" [style.left.px]="xScale(tick)">
+    {{ tick }}
+  </div>
+  }
+</div>

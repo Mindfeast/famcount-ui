@@ -4,9 +4,8 @@ app-spark-line-chart {
 }
 
 .chart-container {
-  width: 600px;
-  height: 400px;
   display: flex;
+  flex-direction: column; /* Stack children vertically */
   background-color: rgb(44, 41, 53);
   border-radius: 10px;
   margin-top: 100px;
@@ -19,17 +18,22 @@ app-spark-line-chart {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px; /* Increased gap for better spacing */
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 90%;
-  left: 50%;
+  gap: 10px;
+  position: static;
+  transform: none;
+  top: auto;
+  left: auto;
 }
-
 svg {
   /* No need for flex or absolute positioning here */
   display: block;
   /* Optionally, set width/height to 100% to fill the container */
   position: relative;
   background-color: rgb(77, 175, 255, 0.1);
+}
+
+.axis-svg-flex {
+  display: flex;
+  align-items: center;
+  height: 300px; // match SVG/chart height
 }

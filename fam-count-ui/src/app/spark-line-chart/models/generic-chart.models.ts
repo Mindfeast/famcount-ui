@@ -11,10 +11,17 @@ export interface Series {
 export interface ChartOptions {
   title: string;
   legend: boolean;
+  type: ChartType;
 }
 
 export interface Point {
   x: number;
   y: number;
   tooltip?: string;
+}
+
+export enum ChartType {
+  Line = 'line',
+  Bar = 'bar',
+  Pie = 'pie',
 }

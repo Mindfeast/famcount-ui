@@ -4,7 +4,10 @@ import { AsyncPipe, CommonModule } from '@angular/common';
 
 import { FormsModule } from '@angular/forms';
 import { GenericChartComponent } from './spark-line-chart/generic-chart.component';
-import { GenericChartData } from './spark-line-chart/models/generic-chart.models';
+import {
+  ChartType,
+  GenericChartData,
+} from './spark-line-chart/models/generic-chart.models';
 
 @Component({
   selector: 'app-root',
@@ -44,7 +47,7 @@ export class AppComponent {
           { x: 2018, y: 2444 },
           { x: 2019, y: 222 },
           { x: 2019, y: 1500 },
-          { x: 2021, y: 1000 },
+          { x: 2021, y: 5000 },
           { x: 2022, y: 2433 },
           { x: 2023, y: 600 },
           { x: 2024, y: 2233 },
@@ -52,7 +55,7 @@ export class AppComponent {
           { x: 2026, y: 4000 },
         ],
       },
-        {
+      {
         category: 'Grapes',
         points: [
           { x: 2018, y: 2444 },
@@ -64,12 +67,18 @@ export class AppComponent {
           { x: 2024, y: 2233 },
           { x: 2025, y: 4244 },
           { x: 2026, y: 123 },
+          { x: 2025, y: 222 },
+          { x: 2026, y: 3244 },
+          { x: 2017, y: 3244 },
+          { x: 2015, y: 3244 },
+          { x: 2014, y: 3244 },
         ],
       },
     ],
     options: {
       title: 'Fruit Sales',
       legend: true,
+      type: ChartType.Line,
     },
   };
 
@@ -84,34 +93,4 @@ export class AppComponent {
     })),
     options: this.data.options,
   };
-
-  // get years(): number[] {
-  //   const yearsSet = new Set<number>();
-  //   this.data?.series.forEach((serie) => {
-  //     serie.points.forEach((point) => {
-  //       const date = point.x instanceof Date ? point.x : new Date(point.x);
-  //       yearsSet.add(date.getFullYear());
-  //     });
-  //   });
-  //   return Array.from(yearsSet).sort();
-  // }
-  // filterData(data: LineChartData) {
-  //   console.log(this.selectedYear);
-  //   if (this.xGranularity === 'year') {
-  //     this.filteredData = data;
-  //     return;
-  //   }
-  //   this.filteredData = {
-  //     series: data.series
-  //       .map((serie: SeriesWithCategory) => ({
-  //         ...serie,
-  //         points: serie.points.filter((p: Point) => {
-  //           const date = p.x instanceof Date ? p.x : new Date(p.x);
-  //           return date.getFullYear() === Number(this.selectedYear);
-  //         }),
-  //       }))
-  //       .filter((serie) => serie.points.length > 0),
-  //   };
-  //   console.log('filteredData:', this.filteredData);
-  // }
 }
