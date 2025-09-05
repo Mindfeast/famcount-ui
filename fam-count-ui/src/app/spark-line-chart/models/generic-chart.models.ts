@@ -13,10 +13,11 @@ export interface ChartOptions {
   legend: boolean;
   type: ChartType;
   smooth?: boolean;
+  viewType: ViewType;
 }
 
 export interface Point {
-  x: number;
+  x: number | string | Date;
   y: number;
   tooltip?: string;
 }
@@ -25,4 +26,11 @@ export enum ChartType {
   Line = 'line',
   Bar = 'bar',
   Pie = 'pie',
+}
+
+export enum ViewType {
+  Year = 'year',
+  Month = 'month',
+  Day = 'day',
+  Number = 'number',
 }

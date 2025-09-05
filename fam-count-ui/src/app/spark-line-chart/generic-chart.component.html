@@ -3,12 +3,26 @@
   [style.height.px]="height + 100"
   [style.width.px]="width + 100"
 >
+  <div class="chart-title-container">
+    {{ data.options.title }}
+
+    <div class="year-month-indicator">
+      @if(viewType === 'day' || viewType === 'month') {
+      <span>Year: {{ selectedYear }} </span>
+      @if(viewType === 'day') {
+      <span>Month: {{ getMonthName(selectedMonth) }}</span>
+      } }
+    </div>
+  </div>
   <div class="axis-svg-flex" [style.height.px]="height">
     <app-sparkline-axis
-      [series]="chartData.series"
+      [series]="data.series"
       [height]="height"
-      [padding]="0.1"
+      [width]="width"
       [xScale]="xScale"
+      [viewType]="viewType"
+      [selectedYear]="selectedYear"
+      [selectedMonth]="selectedMonth"
     ></app-sparkline-axis>
 
     <svg [attr.width]="width" [attr.height]="height">
@@ -28,9 +42,9 @@
       } }
     </svg>
   </div>
-  @if (chartData && chartData.options.legend) {
+  @if (data && data.options.legend) {
   <div class="legend-container">
-    @for (category of chartData.series; track $index) {
+    @for (category of data.series; track $index) {
     <app-chart-legend
       [data]="category"
       [color]="getColor($index)"

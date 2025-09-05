@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './sparkchart-line.component.scss',
   template: `<svg:path
     [attr.d]="d"
-    stroke-width="1.5"
+    stroke-width="2"
     [attr.stroke]="color"
     stroke-linecap="round"
     stroke-linejoin="round"
@@ -33,7 +33,16 @@ export class SparkchartLineComponent {
       return;
     }
     if (this.smooth) {
-      this.d = getSmoothPath(points);
+      const numericPoints = points.map((p) => ({
+        x:
+          typeof p.x === 'string'
+            ? new Date(p.x).getTime()
+            : p.x instanceof Date
+            ? p.x.getTime()
+            : p.x,
+        y: p.y,
+      }));
+      this.d = getSmoothPath(numericPoints);
     } else {
       this.d = getPathCommandsForLine(points);
     }

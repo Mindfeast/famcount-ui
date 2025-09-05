@@ -8,10 +8,10 @@ app-spark-line-chart {
   flex-direction: column; /* Stack children vertically */
   background-color: rgb(44, 41, 53);
   border-radius: 10px;
-  margin-top: 100px;
   position: relative;
   align-items: center;
   justify-content: center;
+  padding: 10px;
 }
 
 .legend-container {
@@ -36,4 +36,41 @@ svg {
   display: flex;
   align-items: center;
   height: 300px; // match SVG/chart height
+}
+
+.chart-title-container {
+  position: relative;
+  display: flex;
+  justify-content: center; // center the title horizontally
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px; // space below the title
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.year-month-indicator {
+  position: absolute;
+  top: 10px; // add this for vertical positioning
+  right: 40px;
+  display: flex;
+  align-items: center; // vertical centering
+  justify-content: center; // horizontal centering
+  padding: 4px 8px; // more horizontal padding for balance
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+
+  span {
+    margin-right: 0; // remove margin if only one span, or adjust as needed
+    font-size: 12px;
+    color: white;
+    text-align: center;
+    width: 100%; // ensure span fills container
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

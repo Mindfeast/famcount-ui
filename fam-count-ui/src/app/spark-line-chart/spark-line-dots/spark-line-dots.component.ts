@@ -11,7 +11,7 @@ import { GeneralTooltipDirective } from '../../shared/general-tooltip.directive'
   template: `
     <svg>
       <g>
-        @for (point of points; track point.x) {
+        @for (point of filteredPoints; track point.x) {
         <circle
           [attr.cx]="point.x"
           [attr.cy]="point.y"
@@ -36,8 +36,30 @@ import { GeneralTooltipDirective } from '../../shared/general-tooltip.directive'
 })
 export class SparkLineDotsComponent {
   @Input() points: Point[] = [];
+
   @Input() color: string = 'blue';
   @Output() pointHover = new EventEmitter<Point>();
 
   hovered?: Point;
+
+  get filteredPoints(): Point[] {
+    const getX = (p: Point) =>
+      typeof p.x === 'number'
+        ? p.x
+        : p.x instanceof Date
+        ? p.x.getTime()
+        : new Date(p.x).getTime();
+
+    if (!this.points.length) return [];
+
+    const minX = Math.min(...this.points.map(getX));
+    const maxX = Math.max(...this.points.map(getX));
+
+    return this.points.filter((point) => {
+      const px = getX(point);
+      const isFirst = px === minX;
+      const isLast = px === maxX;
+      return !(isFirst && point.x === minX) && !(isLast && point.x === maxX);
+    });
+  }
 }
