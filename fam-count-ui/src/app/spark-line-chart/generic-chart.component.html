@@ -5,14 +5,14 @@
 >
   <div class="chart-title-container">
     {{ data.options.title }}
-
+    @if(viewType === 'day' || viewType === 'month') {
     <div class="year-month-indicator">
-      @if(viewType === 'day' || viewType === 'month') {
       <span>Year: {{ selectedYear }} </span>
       @if(viewType === 'day') {
       <span>Month: {{ getMonthName(selectedMonth) }}</span>
-      } }
+      }
     </div>
+    }
   </div>
   <div class="axis-svg-flex" [style.height.px]="height">
     <app-sparkline-axis

@@ -57,7 +57,7 @@ export class GenericChartComponent implements OnChanges {
   @Input() data!: GenericChartData;
   @Input() viewType: ViewType = ViewType.Day;
   @Input() selectedYear: number = 2019;
-  @Input() selectedMonth: number = 1;
+  @Input() selectedMonth: number = 2;
 
   ngOnChanges() {
     this.viewType = this.data.options.viewType || ViewType.Day;

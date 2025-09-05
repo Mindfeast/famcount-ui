@@ -96,16 +96,26 @@ export class SparklineAxisComponent {
     for (let d = 1; d <= daysInMonth; d += 5) {
       this.xTicks.push(new Date(year, month, d));
     }
+    // Always add a tick for day 31
     if (
       this.xTicks.length &&
-      this.xTicks[this.xTicks.length - 1] instanceof Date &&
-      (this.xTicks[this.xTicks.length - 1] as Date).getDate() !== daysInMonth
+      (this.xTicks[this.xTicks.length - 1] as Date).getDate() !== 31
     ) {
-      this.xTicks.push(new Date(year, month, daysInMonth));
+      // This will create a date object, possibly in the next month, but that's fine for axis labeling
+      this.xTicks.push(new Date(year, month, 31));
     }
 
-    this.xTickFormat = (tick: number | Date) =>
-      new Date(tick).getDate().toString();
+    this.xTickFormat = (tick: number | Date) => {
+      // If tick is the last one and daysInMonth < 31, force label to "31"
+      const date = new Date(tick);
+      if (
+        date.getDate() === 31 ||
+        (this.xTicks[this.xTicks.length - 1] === tick && daysInMonth < 31)
+      ) {
+        return '31';
+      }
+      return date.getDate().toString();
+    };
   }
 
   tickToNumber(tick: number | Date): number {

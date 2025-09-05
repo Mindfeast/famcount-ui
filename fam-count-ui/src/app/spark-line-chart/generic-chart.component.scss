@@ -12,6 +12,7 @@ app-spark-line-chart {
   align-items: center;
   justify-content: center;
   padding: 10px;
+  margin-top: 200px;
 }
 
 .legend-container {
@@ -62,15 +63,19 @@ svg {
   padding: 4px 8px; // more horizontal padding for balance
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s, padding 0.3s, top 0.3s,
+    right 0.3s;
 
   span {
-    margin-right: 0; // remove margin if only one span, or adjust as needed
-    font-size: 12px;
+    margin-right: 5px; // remove margin if only one span, or adjust as needed
+    font-size: 10px;
     color: white;
-    text-align: center;
     width: 100%; // ensure span fills container
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: auto;
+    transition: color 0.3s, font-size 0.3s, margin-right 0.3s;
   }
 }
